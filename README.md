@@ -89,22 +89,24 @@ const SimState *GetSimState(sim);
     // .time, .run_number, .run_state, .run_time, .run_time_best
 
 // Emitir un comando de movimiento
-SetMouseSetpoint(sim, distance, rotation);
+void SetMouseSetpoint(sim, distance, rotation);
     // distance: metros a recorrer (positivo = adelante)
     // rotation: giro relativo a la orientación actual (radianes, CCW+)
     // cuanto mayor sea la magnitud del setpoint (distance/rotation),
     // más rápido se moverá el robot
 
 // Herramientas
-float   AngleDiff(source, target);              // diferencia angular en [-pi, pi]
-Vector2 Vector2FromAngle(angle, length = 1.0); // vector unitario desde un ángulo
-Cell    PositionToCell(Vector2 position);       // posición → celda del laberinto
+float AngleDiff(float source, float target);                // diferencia angular en [-pi, pi]
+Vector2 Vector2FromAngle(float angle, float length = 1.0f); // vector a partir de un ángulo
+Cell PositionToCell(Vector2 position);                      // posición → celda del laberinto
 
 // Visualización
-PaintCell(sim, cell, COLOR_CELL_VISITED);
-PaintCell(sim, cell, COLOR_CELL_RED);
-ResetCellColors(sim);
+void PaintCell(sim, cell, COLOR_CELL_VISITED);
+uint32_t GetCellColor(Sim *sim, Cell cell);
+void ResetCellColors(Sim *sim);
 ```
+
+No puedes acceder a los campos de `sim`.
 
 ### Cómo registrar tu agente
 
