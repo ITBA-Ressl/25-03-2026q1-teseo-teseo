@@ -172,7 +172,7 @@ static void CreateMousePhysics(Sim *sim)
     shape_def.material.friction = 0.2f;
     shape_def.material.restitution = 0.05f;
 
-    b2Polygon box = b2MakeBox(MOUSE_HALF_WIDTH, MOUSE_HALF_LENGTH);
+    b2Polygon box = b2MakeBox(MOUSE_HALF_LENGTH, MOUSE_HALF_WIDTH);
     b2CreatePolygonShape(sim->mouse_body, &shape_def, &box);
 }
 
